@@ -12,11 +12,8 @@ class App extends Component {
 
 state = {
   name: undefined,
-  city: undefined,
-  country: undefined,
   location: undefined,
   error: undefined
-
 }
 
 getRestaurant = async (e) => {
@@ -29,14 +26,14 @@ getRestaurant = async (e) => {
 
   const response = await api_call.json();
 
+  console.log(response.response.venues );
+
   if(city){
     this.setState({
       name: response.response.venues[0].name,
-      city: response.response.venues[0].location.city,
-      country: response.response.venues[0].location.country,
       location: response.response.venues[0].location.formattedAddress,
       error: ""
-    })
+    });
   }else{
     this.setState({
       error: "Please enter your city..."
@@ -45,6 +42,8 @@ getRestaurant = async (e) => {
 
 }
 
+
+
   render() {
     return (
       <div className="App">
@@ -52,15 +51,13 @@ getRestaurant = async (e) => {
           <div className="main">
             <div className="container">
               <div className="row">
-                <div className="col-xs-5 title-container">
-                  <Titles />
+                <div className="col-xs-9 title-container">
+                    <Titles />
                 </div>
-                <div className="col-xs-7 form-container">
+                <div className="col-xs-3 form-container">
                   <Form loadRestaurant={this.getRestaurant} />
                   <Result 
                     name={this.state.name}
-                    city={this.state.city}
-                    country={this.state.country}
                     location={this.state.location}
                     error={this.state.error }
                   />

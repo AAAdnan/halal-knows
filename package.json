@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.18.0",
     "bootstrap": "^3.4.1",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
@@ -22,5 +23,9 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "git-scripts": "^0.2.1",
+    "surge": "^0.20.3"
+  }
 }
